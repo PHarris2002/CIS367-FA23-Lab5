@@ -3,6 +3,7 @@ const API_URL = "https://fhu-faculty-api.netlify.app/fhu-faculty.json"
 
 const bookmarkCollection = document.getElementById("added-bookmarks")
 const bookmarkCollectionBtn = document.getElementById("bookmark-collection-btn")
+const mediaSection = document.getElementById("media-section")
 const bookmarkBtn = document.getElementsByClassName("bookmark")
 
 const data = [];
@@ -23,7 +24,7 @@ async function addCards() {
         //div.classList.add("box");
     
         let cardInnerHTML =
-        `<section class="box active flex flex-col h-full">
+        `<section class="box active">
         <section class="card-border w-[24rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl">
             <section class="full-container flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
                 <section class="upper-field-section pb-4 pr-4 font-pixelify h-42">
@@ -93,8 +94,8 @@ async function addCards() {
                 </section>
             </section>
         </section>
-        <section class="media-sharing-section mx-auto w-[20rem]">
-            <section class="flex flex-row justify-around mx-10 py-5 text-6xl">
+        <section id="media-section" class="mx-auto w-[5rem] h-30">
+            <section class="flex flex-col space-y-5 items-center justify-around text-6xl">
                 <div onclick="bookmarkToggle(this)" class="bookmark ${person.FirstName}-${person.LastName} fa-regular fa-bookmark cursor-pointer btn"></div>
                 <div class="download fa-regular fa-circle-down cursor-pointer btn"></div>
                 <div onclick="likeToggle(this)" class="heart fa-regular fa-heart cursor-pointer btn"></div>
@@ -159,7 +160,7 @@ function updateCards() {
             
             div.style.zIndex = index;
             const offset = 100+(length - index)*2;
-            div.style.transform = `translateX(-${offset}%) scale(80%)`;
+            div.style.transform = `translateX(-100%) scale(80%)`;
         
         }
         else if(index === activeIndex)
@@ -174,7 +175,7 @@ function updateCards() {
             div.style.zIndex = (length - index);
             const offset = 100+(index)*2;
 
-            div.style.transform = `translateX(${offset}%) scale(80%)`;
+            div.style.transform = `translateX(100%) scale(80%)`;
         }
     });
 

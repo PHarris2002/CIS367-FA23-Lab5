@@ -16,19 +16,16 @@
 
 .carousel {
     display: flex;
-    align-items: center;
     gap:1rem;
-    /* background-color: aquamarine; */
     height: 100%;
     width:100%;
-    /* overflow: auto; */
 
     position: relative;
-    /* border: 5px solid salmon; */
 }
 
 
 .box {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,15 +72,6 @@
     transform: scale(115%);
 }
 
-#prevButton {
-    /* justify-self: start; */
-}
-
-#nextButton {
-    /* justify-self: end; */
-}
-
-
 .left {
     background-color: crimson;
     /* opacity: 0.5; */
@@ -91,65 +79,16 @@
     /* max-height: 400px; */
 }
 
-.one {
-    /* transform: translateX(0); */
-    left:0;
-    max-height: 325px;
-    
+/*General Animations*/
+
+.fade-in {
+    animation: fadeIn 1s;
 }
 
-.two {
-    /* transform: translateX(20px); */
-    left:20px;
-    max-height: 350px;
-}
-
-.three {
-    /* transform: translateX(40px); */
-    left: 40px;
-    max-height: 375px;
-}
-
-.four {
-    /* transform: translateX(60px); */
-    left: 60px;
-    max-height: 400px;
-}
-
-.right {
-    background-color: seagreen;
-    /* opacity: 0.5; */
-    /* right:0; */
-    /* height: 400px; */
-}
-
-
-.five {
-    right:60px;
-    max-height: 400px;
-    z-index: 8;
-}
-
-.six {
-    /* transform: translateX(40px); */
-    right: 40px;
-    max-height: 375px;
-    z-index: 7;
-}
-
-.seven {
-    /* transform: translateX(20px); */
-    right:20px;
-    max-height: 350px;
-    z-index: 6;
-}
-
-.eight {
-    /* transform: translateX(0); */
-    right:0;
-    max-height: 325px;
-    z-index: 5;
-}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
 /*Button Animations*/
 .btn {
