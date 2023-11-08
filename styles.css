@@ -4,7 +4,14 @@
     box-sizing: border-box;
 }
 
+.body {
+    display: flex;
+    justify-content: center;
+}
+
 .container {
+    align-self: center;
+    border: white 2px solid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,8 +37,6 @@
 .box {
     position: absolute;
     display: flex;
-    justify-content: center;
-    align-items: center;
     transition: all 1s ease-in-out;
     transform: translateX(0);
 

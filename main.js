@@ -24,54 +24,54 @@ async function addCards() {
         //div.classList.add("box");
     
         let cardInnerHTML =
-        `<section class="box active">
-        <section class="card-border w-[24rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl z-10">
-            <section class="full-container h-[41rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
-                <section class="upper-field-section pb-4 pr-4 font-pixelify h-42">
-                    <h2 id="teaching-level" class="w-52 p-1 mb-2 bg-gradient-to-b from-gray-400 to-slate-600 rounded-br-lg text-lg">
+        `<section class="box active flex items-start">
+        <section class="card-border w-[18rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl z-10">
+            <section class="full-container h-[31rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
+                <section class="upper-field-section pb-2 pr-4 font-pixelify">
+                    <h2 id="teaching-level" class="w-52 p-1 mb-2 bg-gradient-to-b from-gray-400 to-slate-600 rounded-br-lg text-sm">
                         ${person.Rank}
                     </h2>
                     <div class="info-subsection flex justify-between items-center mx-4">
                         <div class="flex items-end">
-                            <h1 id="name" class="w-2/4 text-2xl">${person.FirstName} ${person.LastName}</h1>
-                            <h1 id="fantasy-class" class="text-md text-emerald-200 ml-2">${person.Type}</h1>
+                            <h1 id="name" class="w-2/4 text-md">${person.FirstName} ${person.LastName}</h1>
+                            <h1 id="fantasy-class" class="text-sm text-emerald-200 ml-2">${person.Type}</h1>
                         </div>
             
                         <div class="text-end">
                             <h1 id="health-points" class="text-3xl"><span class="text-sm">HP</span> <span class="font-spacegrotesk font-bold text-emerald-200">${person.HitPoints}</span></h1>
-                            <h2 id="field" class="text-sm">${person.FieldofStudy}</h2>
+                            <h2 id="field" class="text-xs">${person.FieldofStudy}</h2>
                         </div>
                     </div>
                 </section>
             
                 <section class="image-section flex justify-center">
-                    <div class="character-image relative w-[19rem] h-44 flex justify-center bg-gradient-to-b border-2">
+                    <div class="character-image relative w-[15rem] h-32 flex justify-center bg-gradient-to-b border-2">
                         <img src="https://fhu-faculty-api.netlify.app/images/headshots/${person.Image}" alt="${person.FirstName} ${person.LastName}" class="object-cover w-full">
-                        <p class="absolute flex left-0 bg-gradient-to-b from-gray-400 to-slate-600 p-2 h-5 justify-center items-center font-pixelify text-xl">${person.EducationLevel}</p>
+                        <p class="absolute flex left-0 bg-gradient-to-b from-gray-400 to-slate-600 p-2 h-5 justify-center items-center font-pixelify text-sm">${person.EducationLevel}</p>
                         <img>
                     </div>
                 </section>
                 
-                <section class="under-image-detail-section flex justify-around mx-8 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600">
+                <section class="under-image-detail-section flex justify-around mx-4 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600">
                     <p id="character-id">#${person.id}</p>
                     <p id="nickname">${person.NickName}</p>
                     <p id="height">HT: ${person.Height}</p>
                 </section>
-                <section class="bottom-portion-of-card-section mb-5 mx-8 bg-gradient-to-b from-indigo-900 to-indigo-950 rounded-lg">
-                    <section class="cost-stamina-section flex p-2 justify-between bg-gradient-to-b from-gray-400 to-slate-600 text-md">
+                <section class="bottom-portion-of-card-section mb-5 mx-4 bg-gradient-to-b from-indigo-900 to-indigo-950 rounded-lg">
+                    <section class="cost-stamina-section flex p-2 justify-between bg-gradient-to-b from-gray-400 to-slate-600 text-xs">
                         <h2 id="cost">Cost: ${person.Cost}</h2>
                         <h2 id="stamina">Stamina: ${person.Stamina}</h2>
                     </section>
             
             
-                    <section class="attacks-section p-5">
-                        <div id="attack-one" class="flex flex-row justify-between mb-5">
-                            <h1 id="attack-one-label" class="text-sm font-bold">${person.Attack1}</h1>
-                            <h1 id="attack-one-points" class="font-bold text-emerald-200 text-xl">${person.Attack1Damage}</h1>  
+                    <section class="attacks-section p-3">
+                        <div id="attack-one" class="flex flex-row justify-between items-start mb-2">
+                            <h1 id="attack-one-label" class="text-xs font-bold">${person.Attack1}</h1>
+                            <h1 id="attack-one-points" class="font-bold text-emerald-200 text-lg">${person.Attack1Damage}</h1>  
                         </div>
-                        <div id="attack-two" class="flex justify-between">
-                            <h1 id="attack-two-label" class="text-sm font-bold">${person.Attack2}</h1>
-                            <h1 id="attack-two-points" class="font-bold text-emerald-200 text-xl">${person.Attack2Damage}</h1>
+                        <div id="attack-two" class="flex justify-between items-start">
+                            <h1 id="attack-two-label" class="text-xs font-bold">${person.Attack2}</h1>
+                            <h1 id="attack-two-points" class="font-bold text-emerald-200 text-lg">${person.Attack2Damage}</h1>
                         </div>
                     </section>
             
@@ -87,7 +87,7 @@ async function addCards() {
                     </section>
                 </section>
             
-                <section class="attributes-section flex items-end mb-2 mx-8">
+                <section class="attributes-section flex items-end mb-2 mx-8 text-xs">
                     <p class="w-1/4 text-left">@2023</p>
                     <p class="w-2/4 text-center break-words">${person.HashTag}</p>
                     <p class="w-1/4 text-right">${person.Creator}</p>
@@ -160,15 +160,15 @@ function updateCards() {
             div.classList.remove("active");
             
             div.style.zIndex = index;
-            const offset = 100+(length - index);
-            div.style.transform = `translateX(-${offset}%) scale(90%)`;
+            const offset = 100+(index);
+            div.style.transform = `translateX(-${offset}%) scale(100%)`;
         
         }
         else if(index === activeIndex)
         {
             div.classList.add("active");
             div.style.zIndex = 300;
-            div.style.transform = `translateX(0) scale(100%)`;
+            div.style.transform = `translateX(0) scale(110%)`;
 
         }
         else {
@@ -176,7 +176,7 @@ function updateCards() {
             div.style.zIndex = (length - index);
             const offset = 100+(index);
 
-            div.style.transform = `translateX(${offset}%) scale(90%)`;
+            div.style.transform = `translateX(${offset}%) scale(100%)`;
         }
     });
 
