@@ -23,6 +23,9 @@
     position: relative;
 }
 
+.collection-section {
+    z-index: 500;
+}
 
 .box {
     position: absolute;

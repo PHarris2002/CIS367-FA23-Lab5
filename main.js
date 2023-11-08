@@ -143,11 +143,12 @@ async function addCards() {
 
         bookmarkCollection.append(bookmarkCollectionParagraph);
 
+        updateCards();
+
     });
 }
 
 addCards();
-updateCards();
 
 function updateCards() {
     const length = data.length;
@@ -159,23 +160,23 @@ function updateCards() {
             div.classList.remove("active");
             
             div.style.zIndex = index;
-            const offset = 100+(length - index)*2;
-            div.style.transform = `translateX(-100%) scale(80%)`;
+            const offset = 100+(length - index);
+            div.style.transform = `translateX(-${offset}%) scale(90%)`;
         
         }
         else if(index === activeIndex)
         {
             div.classList.add("active");
             div.style.zIndex = 300;
-            div.style.transform = `translateX(0) scale(90%)`;
+            div.style.transform = `translateX(0) scale(100%)`;
 
         }
         else {
             div.classList.remove("active");
             div.style.zIndex = (length - index);
-            const offset = 100+(index)*2;
+            const offset = 100+(index);
 
-            div.style.transform = `translateX(100%) scale(80%)`;
+            div.style.transform = `translateX(${offset}%) scale(90%)`;
         }
     });
 
