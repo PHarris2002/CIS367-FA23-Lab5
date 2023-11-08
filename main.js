@@ -26,7 +26,7 @@ async function addCards() {
         let cardInnerHTML =
         `<section class="box active">
         <section class="card-border w-[24rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl z-10">
-            <section class="full-container h-[40rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
+            <section class="full-container h-[41rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
                 <section class="upper-field-section pb-4 pr-4 font-pixelify h-42">
                     <h2 id="teaching-level" class="w-52 p-1 mb-2 bg-gradient-to-b from-gray-400 to-slate-600 rounded-br-lg text-lg">
                         ${person.Rank}
