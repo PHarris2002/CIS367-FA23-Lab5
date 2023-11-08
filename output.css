@@ -584,6 +584,14 @@ video {
   left: 0px;
 }
 
+.top-5 {
+  top: 1.25rem;
+}
+
+.top-auto {
+  top: auto;
+}
+
 .-z-10 {
   z-index: -10;
 }
