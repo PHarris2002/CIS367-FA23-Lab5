@@ -25,8 +25,8 @@ async function addCards() {
     
         let cardInnerHTML =
         `<section class="box active">
-        <section class="card-border w-[24rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl">
-            <section class="full-container flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
+        <section class="card-border w-[24rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl z-10">
+            <section class="full-container h-[40rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
                 <section class="upper-field-section pb-4 pr-4 font-pixelify h-42">
                     <h2 id="teaching-level" class="w-52 p-1 mb-2 bg-gradient-to-b from-gray-400 to-slate-600 rounded-br-lg text-lg">
                         ${person.Rank}
@@ -45,7 +45,7 @@ async function addCards() {
                 </section>
             
                 <section class="image-section flex justify-center">
-                    <div class="character-image relative w-[19rem] h-60 flex justify-center bg-gradient-to-b border-2">
+                    <div class="character-image relative w-[19rem] h-44 flex justify-center bg-gradient-to-b border-2">
                         <img src="https://fhu-faculty-api.netlify.app/images/headshots/${person.Image}" alt="${person.FirstName} ${person.LastName}" class="object-cover w-full">
                         <p class="absolute flex left-0 bg-gradient-to-b from-gray-400 to-slate-600 p-2 h-5 justify-center items-center font-pixelify text-xl">${person.EducationLevel}</p>
                         <img>
@@ -94,7 +94,7 @@ async function addCards() {
                 </section>
             </section>
         </section>
-        <section id="media-section" class="mx-auto w-[5rem] h-30">
+        <section id="media-section" class="w-[5rem] h-30 z-0">
             <section class="flex flex-col space-y-5 items-center justify-around text-6xl">
                 <div onclick="bookmarkToggle(this)" class="bookmark ${person.FirstName}-${person.LastName} fa-regular fa-bookmark cursor-pointer btn"></div>
                 <div class="download fa-regular fa-circle-down cursor-pointer btn"></div>
