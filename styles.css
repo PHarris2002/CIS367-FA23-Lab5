@@ -4,14 +4,6 @@
     box-sizing: border-box;
 }
 
-body{
-    /* background-color: blue; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #222;
-}
-
 .container {
     display: flex;
     align-items: center;
@@ -24,7 +16,6 @@ body{
 
 .carousel {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap:1rem;
     /* background-color: aquamarine; */
@@ -46,10 +37,15 @@ body{
 
 }
 
-.active 
-{
-    /* z-index: 150;
-    transform: scale(110%); */
+#added-bookmarks {
+    position: absolute;
+    transition: 1s;
+    left: -300px;
+}
+
+#added-bookmarks.active-card {
+    transition: 0.7s;
+    left: 0px;
 }
 
 #prevButton, #nextButton
@@ -153,4 +149,30 @@ body{
     right:0;
     max-height: 325px;
     z-index: 5;
+}
+
+/*Button Animations*/
+.btn {
+    transform: translateZ(0);
+    transition-duration: 0.1s;
+    transition-property: transform;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+}
+
+.btn:active {
+    transform: scale(1.0);
+}
+
+#added-bookmarks {
+    position: absolute;
+    transition: 1s;
+    left: -300px;
+}
+
+#added-bookmarks.active-nav {
+    transition: 0.7s;
+    left: 0px;
 }

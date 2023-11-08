@@ -1,7 +1,12 @@
 
 const API_URL = "https://fhu-faculty-api.netlify.app/fhu-faculty.json"
 
+const bookmarkCollection = document.getElementById("added-bookmarks")
+const bookmarkCollectionBtn = document.getElementById("bookmark-collection-btn")
+const bookmarkBtn = document.getElementsByClassName("bookmark")
+
 const data = [];
+const bookmarkList = [];
 
 const carousel = document.getElementsByClassName("carousel")[0];
 var activeIndex = Math.floor(data.length/2);
@@ -18,7 +23,7 @@ async function addCards() {
         //div.classList.add("box");
     
         let cardInnerHTML =
-        `<section class="box active flex flex-col">
+        `<section class="box active flex flex-col h-full">
         <section class="card-border w-[24rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl">
             <section class="full-container flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
                 <section class="upper-field-section pb-4 pr-4 font-pixelify h-42">
@@ -101,9 +106,42 @@ async function addCards() {
         div.innerHTML = cardInnerHTML;
     
         //div.innerHTML = `${person.FirstName} ${person.LastName}`
-        data.push(`${person.FirstName}-${person.LastName}`)
-    
-        carousel.appendChild(div);
+        data.push(`${person.id}`)
+        carousel.append(div);
+
+        // For bookmark toggle functionality
+        // Paragraph element for bookmark list
+        bookmarkCollectionParagraph = document.createElement('p');
+
+        // Hidden element for each name to defaultly disappear
+        bookmarkCollectionParagraph.classList.add('hidden');
+
+        facultyNameClass = `${person.FirstName}-${person.LastName}`
+
+        // Adds identifier class for each name - uniquely identifies any duplicates
+        if (bookmarkList.includes(`${facultyNameClass}`))
+        {
+            bookmarkCollectionParagraph.classList.add(`${facultyNameClass}-one`);        
+            bookmarkList.push(`${facultyNameClass}-one`)
+        }
+
+        else if (bookmarkList.includes(`${facultyNameClass}-one`))
+        {
+            bookmarkCollectionParagraph.classList.add(`${facultyNameClass}-two`)
+            bookmarkList.push(`${facultyNameClass}-two`)
+        }
+
+        else
+        {
+            bookmarkCollectionParagraph.classList.add(`${facultyNameClass}`);  
+            bookmarkList.push(`${facultyNameClass}`)
+        }
+
+        // The text itself
+        bookmarkCollectionParagraph.innerHTML = `${person.FirstName} ${person.LastName}`;
+
+        bookmarkCollection.append(bookmarkCollectionParagraph);
+
     });
 }
 
@@ -111,52 +149,32 @@ addCards();
 updateCards();
 
 function updateCards() {
-
-    var windowWidth = window.innerWidth;
-    console.log(windowWidth);
-    var cardWidth = 350;
     const length = data.length;
 
     const boxes = document.querySelectorAll(".carousel .box");
     
     boxes.forEach( (div, index) => {
-      
-        //let div = document.createElement('div');
-        //div.classList.add("box");
-    
         if( index < activeIndex){
-            //div.classList.add("left");
             div.classList.remove("active");
-            //const offset = windowWidth/2 - cardWidth/2 - index * 10;
-            // div.style.transform = `translateX(${-offset}px)`;
             
             div.style.zIndex = index;
-            const offset = 100+(length-index)*2;
-            div.style.transform = `translateX(-${offset}%) scale(100%)`;
-           
-            // div.style.left = `${index*8}px`
-            //div.style.transform+=` scale(${ Math.pow(0.9, length-index+1)})`;
+            const offset = 100+(length - index)*2;
+            div.style.transform = `translateX(-${offset}%) scale(80%)`;
+        
         }
         else if(index === activeIndex)
         {
             div.classList.add("active");
             div.style.zIndex = 300;
-            div.style.transform = `translateX(0) scale(120%)`;
+            div.style.transform = `translateX(0) scale(90%)`;
 
         }
         else {
-            //div.classList.add("right");
             div.classList.remove("active");
-            // const offset = windowWidth/2 - cardWidth/2 - (length - index+1) * 10;
-            // console.log(offset)
-            // div.style.transform = `translateX(${offset}px)`;
             div.style.zIndex = (length - index);
             const offset = 100+(index)*2;
 
-            div.style.transform = `translateX(${offset}%) scale(100%)`;
-
-            // div.style.right = `${ (length-index)*8}px`
-            //div.style.right  = `${offset}px`
+            div.style.transform = `translateX(${offset}%) scale(80%)`;
         }
     });
 
@@ -182,3 +200,32 @@ document.getElementById("nextButton").addEventListener("click", ()=>{
     }
     
 });
+
+function likeToggle(x) {
+    x.classList.toggle("fa-solid");
+    x.classList.toggle("text-red-500")
+  }
+
+function bookmarkToggle(x) {
+    x.classList.toggle("fa-solid");
+    x.classList.toggle("text-amber-500");
+
+    // Get specific name
+
+    for (let i = 0; i < bookmarkList.length; i++)
+    {
+        let object = bookmarkList[i];
+        if (x.classList.contains(object))
+        {
+            document.querySelector(`#added-bookmarks > p.${object}`).classList.toggle('hidden');
+        }
+    }
+
+    //document.querySelector("#added-bookmarks > p").classList.toggle('hidden');
+
+}
+
+function bookmarkContainerSlide() {
+    bookmarkCollection.classList.toggle("active-nav");
+    console.log('yeah');
+}
