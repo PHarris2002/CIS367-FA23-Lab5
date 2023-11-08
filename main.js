@@ -1,13 +1,19 @@
 
-const data = ["zero","one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"];
+const API_URL = "https://fhu-faculty-api.netlify.app/fhu-faculty.json"
+
+const data = [];
 
 const carousel = document.getElementsByClassName("carousel")[0];
 var activeIndex = Math.floor(data.length/2);
 
 
-function addCards() {
+async function addCards() {
     
-    data.forEach( (item, index) => {
+    let response = await fetch(API_URL);
+    let people = await response.json();
+
+
+    people.forEach(person => {
         let div = document.createElement('div');
         div.classList.add("box");
     
@@ -31,8 +37,11 @@ function addCards() {
         //     div.style.zIndex = (length - index);
         //     div.style.right  = `${offset}px`
         // }
+
+        
     
-        div.innerHTML = `${index} ${item}`
+        div.innerHTML = `${person.FirstName} ${person.LastName}`
+        data.push(`${person.FirstName}-${person.LastName}`)
     
         carousel.appendChild(div);
     });
