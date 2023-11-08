@@ -1,10 +1,9 @@
-
 const API_URL = "https://fhu-faculty-api.netlify.app/fhu-faculty.json"
 
 const bookmarkCollection = document.getElementById("added-bookmarks")
-const bookmarkCollectionBtn = document.getElementById("bookmark-collection-btn")
-const mediaSection = document.getElementById("media-section")
-const bookmarkBtn = document.getElementsByClassName("bookmark")
+// const bookmarkCollectionBtn = document.getElementById("bookmark-collection-btn")
+// const mediaSection = document.getElementById("media-section")
+// const bookmarkBtn = document.getElementsByClassName("bookmark")
 
 const data = [];
 const bookmarkList = [];
@@ -24,9 +23,9 @@ async function addCards() {
         //div.classList.add("box");
     
         let cardInnerHTML =
-        `<section class="box active flex items-start">
+        `<section class="box active">
         <section class="card-border w-[18rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl z-10">
-            <section class="full-container h-[31rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
+            <section class="full-container h-[33rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
                 <section class="upper-field-section pb-2 pr-4 font-pixelify">
                     <h2 id="teaching-level" class="w-52 p-1 mb-2 bg-gradient-to-b from-gray-400 to-slate-600 rounded-br-lg text-sm">
                         ${person.Rank}
@@ -52,7 +51,7 @@ async function addCards() {
                     </div>
                 </section>
                 
-                <section class="under-image-detail-section flex justify-around mx-4 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600">
+                <section class="under-image-detail-section flex justify-around mx-4 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600 text-xs">
                     <p id="character-id">#${person.id}</p>
                     <p id="nickname">${person.NickName}</p>
                     <p id="height">HT: ${person.Height}</p>
@@ -94,13 +93,13 @@ async function addCards() {
                 </section>
             </section>
         </section>
-        <section id="media-section" class="w-[5rem] h-30 z-0">
+        <!-- <section id="media-section" class="w-[5rem] h-30 z-0">
             <section class="flex flex-col space-y-5 items-center justify-around text-6xl">
                 <div onclick="bookmarkToggle(this)" class="bookmark ${person.FirstName}-${person.LastName} fa-regular fa-bookmark cursor-pointer btn"></div>
                 <div class="download fa-regular fa-circle-down cursor-pointer btn"></div>
                 <div onclick="likeToggle(this)" class="heart fa-regular fa-heart cursor-pointer btn"></div>
             </section>
-        </section>
+        </section> -->
         </section>`
 
         
