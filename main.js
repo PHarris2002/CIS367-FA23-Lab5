@@ -1,9 +1,9 @@
 const API_URL = "https://fhu-faculty-api.netlify.app/fhu-faculty.json"
 
 const bookmarkCollection = document.getElementById("added-bookmarks")
-// const bookmarkCollectionBtn = document.getElementById("bookmark-collection-btn")
-// const mediaSection = document.getElementById("media-section")
-// const bookmarkBtn = document.getElementsByClassName("bookmark")
+const bookmarkCollectionBtn = document.getElementById("bookmark-collection-btn")
+const mediaSection = document.getElementById("media-section")
+const bookmarkBtn = document.getElementsByClassName("bookmark")
 
 const data = [];
 const bookmarkList = [];
@@ -23,9 +23,9 @@ async function addCards() {
         //div.classList.add("box");
     
         let cardInnerHTML =
-        `<section class="box active">
+        `<section class="box active flex items-start">
         <section class="card-border w-[18rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl z-10">
-            <section class="full-container h-[33rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
+            <section class="full-container h-[31rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
                 <section class="upper-field-section pb-2 pr-4 font-pixelify">
                     <h2 id="teaching-level" class="w-52 p-1 mb-2 bg-gradient-to-b from-gray-400 to-slate-600 rounded-br-lg text-sm">
                         ${person.Rank}
@@ -51,7 +51,7 @@ async function addCards() {
                     </div>
                 </section>
                 
-                <section class="under-image-detail-section flex justify-around mx-4 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600 text-xs">
+                <section class="under-image-detail-section flex justify-around mx-4 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600">
                     <p id="character-id">#${person.id}</p>
                     <p id="nickname">${person.NickName}</p>
                     <p id="height">HT: ${person.Height}</p>
@@ -93,13 +93,13 @@ async function addCards() {
                 </section>
             </section>
         </section>
-        <!-- <section id="media-section" class="w-[5rem] h-30 z-0">
+        <section id="media-section" class="w-[5rem] h-30 z-0">
             <section class="flex flex-col space-y-5 items-center justify-around text-6xl">
                 <div onclick="bookmarkToggle(this)" class="bookmark ${person.FirstName}-${person.LastName} fa-regular fa-bookmark cursor-pointer btn"></div>
                 <div class="download fa-regular fa-circle-down cursor-pointer btn"></div>
                 <div onclick="likeToggle(this)" class="heart fa-regular fa-heart cursor-pointer btn"></div>
             </section>
-        </section> -->
+        </section>
         </section>`
 
         
@@ -137,9 +137,7 @@ async function addCards() {
             bookmarkList.push(`${facultyNameClass}`)
         }
 
-        // The text itself
         bookmarkCollectionParagraph.innerHTML = `${person.FirstName} ${person.LastName}`;
-
         bookmarkCollection.append(bookmarkCollectionParagraph);
 
         updateCards();
@@ -151,43 +149,69 @@ addCards();
 
 function updateCards() {
     const length = data.length;
+    const media = document.querySelectorAll(".carousel #media-section");
 
-    const boxes = document.querySelectorAll(".carousel .box");
-    
-    boxes.forEach( (div, index) => {
+    media.forEach((div, index) => {
         if( index < activeIndex){
-            div.classList.remove("active");
-            
-            div.style.zIndex = index;
-            const offset = 100+(index);
-            div.style.transform = `translateX(-${offset}%) scale(100%)`;
-        
+            // left
+            div.classList.remove("opacity-100");
+            div.classList.add("opacity-0");
         }
         else if(index === activeIndex)
         {
-            div.classList.add("active");
-            div.style.zIndex = 300;
-            div.style.transform = `translateX(0) scale(110%)`;
-
+            // middle
+            div.classList.remove("opacity-0");
+            div.classList.add("opacity-100");
         }
         else {
-            div.classList.remove("active");
-            div.style.zIndex = (length - index);
-            const offset = 100+(index);
+            //right
+            div.classList.remove("opacity-100");
+            div.classList.add("opacity-0");
+        }
+    })
+    
+    const boxes = document.querySelectorAll(".carousel .box");
 
-            div.style.transform = `translateX(${offset}%) scale(100%)`;
+    boxes.forEach( (div, index) => {
+        if( index < activeIndex){
+            // left
+            div.classList.remove("active");
+            // div.classList.remove("opacity-100");
+            // div.classList.add("opacity-0");
+            div.style.zIndex = index;
+            const offset = 100;
+            div.style.transform = `translateX(-${offset}%) scale(80%)`;
+        }
+        else if(index === activeIndex)
+        {
+            // middle
+            div.classList.add("active");
+            // div.classList.remove("opacity-0");
+            // div.classList.add("opacity-100");
+            div.style.zIndex = 300;
+            div.style.transform = `translateX(0%) scale(100%)`;
+        }
+        else {
+            //right
+            div.classList.remove("active");
+            // div.classList.remove("opacity-100");
+            // div.classList.add("opacity-0");
+            div.style.zIndex = (length - index);
+            const offset = 100;
+            div.style.transform = `translateX(${offset}%) scale(80%)`;
         }
     });
-
 }
 
 window.addEventListener("resize", updateCards);
 
-
+carouselOffset = 20;
 document.getElementById("prevButton").addEventListener("click", ()=>{
     if( activeIndex >= 0)
     {
         activeIndex--;
+        carouselOffset = carouselOffset + 1.05;
+        carousel.style.transform = `translateX(${carouselOffset}%)`;
         updateCards();
     }
     
@@ -197,6 +221,8 @@ document.getElementById("nextButton").addEventListener("click", ()=>{
     if( activeIndex < data.length)
     {
         activeIndex++;
+        carouselOffset = carouselOffset - 1.05;
+        carousel.style.transform = `translateX(${carouselOffset}%)`;
         updateCards();
     }
     
@@ -226,7 +252,16 @@ function bookmarkToggle(x) {
 
 }
 
+function shareToggle(x)
+{
+    const subject = 'Check out this amazing card!';
+    const body = 'I think you would enjoy this card.';
+
+    const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+    window.location.href = mailtoLink;
+}
+
 function bookmarkContainerSlide() {
     bookmarkCollection.classList.toggle("active-nav");
-    console.log('yeah');
 }
