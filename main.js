@@ -136,8 +136,10 @@ async function addCards() {
             bookmarkList.push(`${facultyNameClass}`)
         }
 
-        // The text itself
         bookmarkCollectionParagraph.innerHTML = `${person.FirstName} ${person.LastName}`;
+
+        //Turn into link
+        bookmarkCollectionLink = document.createElement('a');
 
         bookmarkCollection.append(bookmarkCollectionParagraph);
 
@@ -255,5 +257,4 @@ function bookmarkToggle(x) {
 
 function bookmarkContainerSlide() {
     bookmarkCollection.classList.toggle("active-nav");
-    console.log('yeah');
 }
