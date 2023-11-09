@@ -2,6 +2,7 @@ const API_URL = "https://fhu-faculty-api.netlify.app/fhu-faculty.json"
 
 const bookmarkCollection = document.getElementById("added-bookmarks")
 const bookmarkCollectionBtn = document.getElementById("bookmark-collection-btn")
+
 const bookmarkBtn = document.getElementsByClassName("bookmark")
 
 const data = [];
@@ -95,7 +96,7 @@ async function addCards() {
             <section id="media-section" class="w-[5rem] z-0">
                 <section class="flex flex-col space-y-5 items-center justify-around text-6xl">
                     <div onclick="bookmarkToggle(this)" class="bookmark ${person.FirstName}-${person.LastName} fa-regular fa-bookmark cursor-pointer btn"></div>
-                    <div class="download fa-regular fa-circle-down cursor-pointer btn"></div>
+                    <div onclick="shareToggle(this)" class="share fa-solid fa-share-nodes cursor-pointer btn"></div>
                     <div onclick="likeToggle(this)" class="heart fa-regular fa-heart cursor-pointer btn"></div>
                 </section>
             </section>
@@ -137,10 +138,6 @@ async function addCards() {
         }
 
         bookmarkCollectionParagraph.innerHTML = `${person.FirstName} ${person.LastName}`;
-
-        //Turn into link
-        bookmarkCollectionLink = document.createElement('a');
-
         bookmarkCollection.append(bookmarkCollectionParagraph);
 
         updateCards();
@@ -152,9 +149,9 @@ addCards();
 
 function updateCards() {
     const length = data.length;
-    const test = document.querySelectorAll(".carousel #media-section");
+    const media = document.querySelectorAll(".carousel #media-section");
 
-    test.forEach((div, index) => {
+    media.forEach((div, index) => {
         if( index < activeIndex){
             // left
             div.classList.remove("opacity-100");
@@ -253,6 +250,16 @@ function bookmarkToggle(x) {
 
     //document.querySelector("#added-bookmarks > p").classList.toggle('hidden');
 
+}
+
+function shareToggle(x)
+{
+    const subject = 'Check out this amazing card!';
+    const body = 'I think you would enjoy this card.';
+
+    const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+    window.location.href = mailtoLink;
 }
 
 function bookmarkContainerSlide() {
