@@ -150,9 +150,29 @@ addCards();
 
 function updateCards() {
     const length = data.length;
+    const test = document.querySelectorAll(".carousel #media-section");
 
-    const boxes = document.querySelectorAll(".carousel .box");
+    test.forEach((div, index) => {
+        if( index < activeIndex){
+            // left
+            div.classList.remove("opacity-100");
+            div.classList.add("opacity-0");
+        }
+        else if(index === activeIndex)
+        {
+            // middle
+            div.classList.remove("opacity-0");
+            div.classList.add("opacity-100");
+        }
+        else {
+            //right
+            div.classList.remove("opacity-100");
+            div.classList.add("opacity-0");
+        }
+    })
     
+    const boxes = document.querySelectorAll(".carousel .box");
+
     boxes.forEach( (div, index) => {
         if( index < activeIndex){
             // left

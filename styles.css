@@ -11,7 +11,6 @@
 
 .container {
     align-self: center;
-    border: white 2px solid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,6 +52,11 @@
 #added-bookmarks.active-card {
     transition: 0.7s;
     left: 0px;
+}
+
+#media-section {
+    transition-delay: 1s;
+    transition: all 0.5s ease-in;
 }
 
 #prevButton, #nextButton
