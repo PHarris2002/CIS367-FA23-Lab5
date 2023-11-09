@@ -26,7 +26,7 @@ async function addCards() {
         let cardInnerHTML =
         `<section class="box active flex items-start">
         <section class="card-border w-[18rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl z-10">
-            <section class="full-container h-[31rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
+            <section class="full-container h-[33rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
                 <section class="upper-field-section pb-2 pr-4 font-pixelify">
                     <h2 id="teaching-level" class="w-52 p-1 mb-2 bg-gradient-to-b from-gray-400 to-slate-600 rounded-br-lg text-sm">
                         ${person.Rank}
@@ -38,7 +38,7 @@ async function addCards() {
                         </div>
             
                         <div class="text-end">
-                            <h1 id="health-points" class="text-3xl"><span class="text-sm">HP</span> <span class="font-spacegrotesk font-bold text-emerald-200">${person.HitPoints}</span></h1>
+                            <h1 id="health-points" class="text-3xl"><span class="text-xs">HP</span> <span class="font-spacegrotesk font-bold text-emerald-200 text-xl">${person.HitPoints}</span></h1>
                             <h2 id="field" class="text-xs">${person.FieldofStudy}</h2>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ async function addCards() {
                     </div>
                 </section>
                 
-                <section class="under-image-detail-section flex justify-around mx-4 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600">
+                <section class="under-image-detail-section flex justify-around mx-4 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600 text-xs">
                     <p id="character-id">#${person.id}</p>
                     <p id="nickname">${person.NickName}</p>
                     <p id="height">HT: ${person.Height}</p>
@@ -87,14 +87,14 @@ async function addCards() {
                     </section>
                 </section>
             
-                <section class="attributes-section flex items-end mb-2 mx-8 text-xs">
+                <section class="attributes-section flex items-end mx-8 text-xs">
                     <p class="w-1/4 text-left">@2023</p>
                     <p class="w-2/4 text-center break-words">${person.HashTag}</p>
                     <p class="w-1/4 text-right">${person.Creator}</p>
                 </section>
             </section>
         </section>
-        <section id="media-section" class="w-[5rem] h-30 z-0">
+        <section id="media-section" class="w-[5rem] z-0">
             <section class="flex flex-col space-y-5 items-center justify-around text-6xl">
                 <div onclick="bookmarkToggle(this)" class="bookmark ${person.FirstName}-${person.LastName} fa-regular fa-bookmark cursor-pointer btn"></div>
                 <div class="download fa-regular fa-circle-down cursor-pointer btn"></div>
@@ -157,29 +157,27 @@ function updateCards() {
     
     boxes.forEach( (div, index) => {
         if( index < activeIndex){
+            // left
             div.classList.remove("active");
-            
             div.style.zIndex = index;
-            const offset = 100+(index);
+            const offset = 100+(length-index);
             div.style.transform = `translateX(-${offset}%) scale(100%)`;
-        
         }
         else if(index === activeIndex)
         {
+            // middle
             div.classList.add("active");
             div.style.zIndex = 300;
-            div.style.transform = `translateX(0) scale(110%)`;
-
+            div.style.transform = `translateX(0) scale(120%)`;
         }
         else {
+            //right 
             div.classList.remove("active");
             div.style.zIndex = (length - index);
             const offset = 100+(index);
-
             div.style.transform = `translateX(${offset}%) scale(100%)`;
         }
     });
-
 }
 
 window.addEventListener("resize", updateCards);
