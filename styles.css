@@ -59,9 +59,10 @@
     transition: all 0.5s ease-in;
 }
 
-#prevButton, #nextButton
+#prevButton, #nextButton, #farRightButton, #farLeftButton
 {
     /* padding:1rem; */
+    border: white 3px solid;
     font-size: 3rem;
     z-index: 400;
     background-color: rgba(100,100,100,0.5);
@@ -81,7 +82,7 @@
     /* margin-inline: 1.5rem; */
 }
 
-#prevButton:hover, #prevButton:active, #nextButton:hover, #nextButton:active
+#prevButton:hover, #prevButton:active, #nextButton:hover, #nextButton:active, #farLeftButton:hover, #farLeftButton:active, #farRightButton:hover, #farRightButton:active
 {
     transform: scale(115%);
 }

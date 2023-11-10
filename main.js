@@ -210,7 +210,7 @@ document.getElementById("prevButton").addEventListener("click", ()=>{
     if( activeIndex >= 0)
     {
         activeIndex--;
-        carouselOffset = carouselOffset + 1.05;
+        carouselOffset = carouselOffset + 0.99
         carousel.style.transform = `translateX(${carouselOffset}%)`;
         updateCards();
     }
@@ -221,12 +221,39 @@ document.getElementById("nextButton").addEventListener("click", ()=>{
     if( activeIndex < data.length)
     {
         activeIndex++;
-        carouselOffset = carouselOffset - 1.05;
+        carouselOffset = carouselOffset - 0.99;
         carousel.style.transform = `translateX(${carouselOffset}%)`;
         updateCards();
     }
     
 });
+
+document.getElementById("farLeftButton").addEventListener("click", ()=>{
+    for (let i = 0; i < data.length; i++)
+    {
+        if( activeIndex >= 0)
+        {
+            activeIndex--;
+            carouselOffset = carouselOffset + 0.99
+            carousel.style.transform = `translateX(${carouselOffset}%)`;
+            updateCards();
+        }
+    }
+});
+
+document.getElementById("farRightButton").addEventListener("click", ()=>{
+    for (let i = 0; i < data.length; i++)
+    {
+        if( activeIndex < data.length)
+        {
+            activeIndex++;
+            carouselOffset = carouselOffset - 0.99;
+            carousel.style.transform = `translateX(${carouselOffset}%)`;
+            updateCards();
+        }
+    }
+});
+
 
 function likeToggle(x) {
     x.classList.toggle("fa-solid");
