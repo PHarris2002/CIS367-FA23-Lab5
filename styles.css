@@ -104,6 +104,11 @@
     100% { opacity: 1; }
   }
 
+.rotate {
+    transform: rotate(45deg);
+    transition: all 0.1s ease-in;
+}
+
 /*Button Animations*/
 .btn {
     transform: translateZ(0);
