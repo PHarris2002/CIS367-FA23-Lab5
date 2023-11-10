@@ -23,7 +23,7 @@ async function addCards() {
         //div.classList.add("box");
     
         let cardInnerHTML =
-        `<section class="box active flex items-start">
+        `<section class="box active flex">
             <section class="card-border w-[18rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 text-white rounded-2xl z-10">
                 <section class="full-container h-[33rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
                     <section class="upper-field-section pb-2 pr-4">
@@ -37,7 +37,7 @@ async function addCards() {
                             </div>
                 
                             <div class="text-end">
-                                <h1 id="health-points" class="text-3xl"><span class="text-xs">HP</span> <span class="font-bold text-emerald-200 text-xl">${person.HitPoints}</span></h1>
+                                <h1 id="health-points" class="text-3xl"><span class="text-xs">HP</span> <span class="font-bold text-emerald-200 gill text-xl">${person.HitPoints}</span></h1>
                                 <h2 id="field" class="text-xs">${person.FieldofStudy}</h2>
                             </div>
                         </div>
@@ -51,12 +51,12 @@ async function addCards() {
                         </div>
                     </section>
                     
-                    <section class="under-image-detail-section flex justify-between mx-12 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600 text-xs">
+                    <section class="under-image-detail-section flex justify-between mx-12 px-3 mb-5 bg-gradient-to-b from-gray-400 to-slate-600 gill text-xs">
                         <p id="character-id">#${person.id}</p>
                         <p id="nickname">${person.NickName}</p>
                         <p id="height">HT: ${person.Height}</p>
                     </section>
-                    <section class="bottom-portion-of-card-section mb-5 mx-4 bg-gradient-to-b from-indigo-900 to-indigo-950 rounded-lg">
+                    <section class="bottom-portion-of-card-section min-h-[12rem] mb-5 mx-4 bg-gradient-to-b from-indigo-900 to-indigo-950 rounded-lg">
                         <section class="cost-stamina-section flex p-2 justify-between bg-gradient-to-b from-gray-400 to-slate-600 text-xs">
                             <h2 id="cost">Cost: ${person.Cost}</h2>
                             <h2 id="stamina">Stamina: ${person.Stamina}</h2>
@@ -66,15 +66,15 @@ async function addCards() {
                         <section class="attacks-section p-3">
                             <div id="attack-one" class="flex flex-row justify-between items-start mb-2">
                                 <h1 id="attack-one-label" class="text-xs">${person.Attack1}</h1>
-                                <h1 id="attack-one-points" class="font-bold text-emerald-200 text-lg">${person.Attack1Damage}</h1>  
+                                <h1 id="attack-one-points" class="font-bold text-emerald-200 gill text-lg">${person.Attack1Damage}</h1>  
                             </div>
                             <div id="attack-two" class="flex justify-between items-start">
                                 <h1 id="attack-two-label" class="text-xs font-bold">${person.Attack2}</h1>
-                                <h1 id="attack-two-points" class="font-bold text-emerald-200 text-lg">${person.Attack2Damage}</h1>
+                                <h1 id="attack-two-points" class="font-bold text-emerald-200 gill text-lg">${person.Attack2Damage}</h1>
                             </div>
                         </section>
                 
-                        <section class="resistances-weaknesses-section flex px-3 mb-5 text-xs">
+                        <section class="resistances-weaknesses-section flex px-3 mb-1 text-xs">
                             <div class="w-1/2">
                                 <h3 class="font-bold text-emerald-200">Resistances</h3>
                                 <p>${person.Resistances}</p>
@@ -93,7 +93,7 @@ async function addCards() {
                     </section>
                 </section>
             </section>
-            <section id="media-section" class="w-[5rem] z-0">
+            <section id="media-section" class="w-[5rem] z-0 text-indigo-900">
                 <section class="flex flex-col space-y-5 items-center justify-around text-6xl">
                     <div onclick="bookmarkToggle(this)" class="bookmark ${person.FirstName}-${person.LastName} fa-solid fa-plus cursor-pointer btn"></div>
                     <div onclick="shareToggle(this)" class="share fa-solid fa-share-nodes cursor-pointer btn"></div>

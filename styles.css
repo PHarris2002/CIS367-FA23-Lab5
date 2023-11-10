@@ -2,6 +2,13 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.pixelify {
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+.gill {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
