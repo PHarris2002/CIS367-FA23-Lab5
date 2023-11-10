@@ -24,9 +24,9 @@ async function addCards() {
     
         let cardInnerHTML =
         `<section class="box active flex items-start">
-            <section class="card-border w-[18rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 font-spacegrotesk text-white rounded-2xl z-10">
+            <section class="card-border w-[18rem] m-auto p-2 bg-gradient-to-b from-gray-400 to-gray-700 text-white rounded-2xl z-10">
                 <section class="full-container h-[33rem] flex flex-col bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl">
-                    <section class="upper-field-section pb-2 pr-4 font-pixelify">
+                    <section class="upper-field-section pb-2 pr-4">
                         <h2 id="teaching-level" class="w-52 p-1 mb-2 bg-gradient-to-b from-gray-400 to-slate-600 rounded-br-lg text-sm">
                             ${person.Rank}
                         </h2>
@@ -37,7 +37,7 @@ async function addCards() {
                             </div>
                 
                             <div class="text-end">
-                                <h1 id="health-points" class="text-3xl"><span class="text-xs">HP</span> <span class="font-spacegrotesk font-bold text-emerald-200 text-xl">${person.HitPoints}</span></h1>
+                                <h1 id="health-points" class="text-3xl"><span class="text-xs">HP</span> <span class="font-bold text-emerald-200 text-xl">${person.HitPoints}</span></h1>
                                 <h2 id="field" class="text-xs">${person.FieldofStudy}</h2>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ async function addCards() {
                     <section class="image-section flex justify-center">
                         <div class="character-image relative w-[10rem] h-[8rem] flex justify-center bg-gradient-to-b border-2">
                             <img src="https://fhu-faculty-api.netlify.app/images/headshots/${person.Image}" alt="${person.FirstName} ${person.LastName}" class="object-cover w-full">
-                            <p class="absolute flex left-0 bg-gradient-to-b from-gray-400 to-slate-600 p-2 h-5 justify-center items-center font-pixelify text-sm">${person.EducationLevel}</p>
+                            <p class="absolute flex left-0 bg-gradient-to-b from-gray-400 to-slate-600 p-2 h-5 justify-center items-center text-sm">${person.EducationLevel}</p>
                             <img>
                         </div>
                     </section>
@@ -65,7 +65,7 @@ async function addCards() {
                 
                         <section class="attacks-section p-3">
                             <div id="attack-one" class="flex flex-row justify-between items-start mb-2">
-                                <h1 id="attack-one-label" class="text-xs font-bold">${person.Attack1}</h1>
+                                <h1 id="attack-one-label" class="text-xs">${person.Attack1}</h1>
                                 <h1 id="attack-one-points" class="font-bold text-emerald-200 text-lg">${person.Attack1Damage}</h1>  
                             </div>
                             <div id="attack-two" class="flex justify-between items-start">
